@@ -456,7 +456,7 @@ h4 {
 
 .leaflet-top {
     position: absolute;
-    margin-top: calc(7.2em + var(--archive-banner-height));
+    margin-top: 7.2em;
     z-index: 1000;
 }
 
