@@ -2,6 +2,11 @@
 
 /* CSS TO STYLE THE WHOLE PAGE */
 
+:root {
+    --archive-banner-height: 88px;
+}
+
+
 html,
 body {
     margin: 0;
@@ -11,6 +16,62 @@ body {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     overflow-y: hidden;
     overflow-x: hidden;
+}
+
+#archive-banner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100002;
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 18px 20px;
+    background-color: #d6e5ea;
+    color: #1c1c1c;
+}
+
+.archive-banner-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 20px;
+    width: 20px;
+    height: 20px;
+    margin-top: 2px;
+    border-radius: 50%;
+    background-color: #005a7a;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.archive-banner-content {
+    min-width: 0;
+}
+
+.archive-banner-title,
+.archive-banner-text {
+    margin: 0;
+}
+
+.archive-banner-title {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.archive-banner-text {
+    margin-top: 8px;
+    font-size: 16px;
+    line-height: 1.45;
+}
+
+.archive-banner-text a {
+    color: #005073;
+    word-break: break-word;
 }
 
 #map {
@@ -23,7 +84,7 @@ body {
 
 #layerselect {
     position: absolute !important;
-    top: 130px !important; 
+    top: calc(130px + var(--archive-banner-height)) !important;
     right: 25px; 
     z-index: 999999 !important;
     height: 30px; 
@@ -52,7 +113,7 @@ body {
 #title {
     position: fixed;
     z-index: 100000;
-    top: 0;
+    top: var(--archive-banner-height);
     left: 0;
     width: 100%;
     padding-top: 10px;
@@ -69,7 +130,7 @@ body {
     display: none;
     position: fixed;
     z-index: 100000;
-    top: 0;
+    top: var(--archive-banner-height);
     left: 0;
     width: 100%;
     padding-top: 10px;
@@ -102,7 +163,7 @@ h1 {
 #top-buttons {
     position: fixed;
     z-index: 100001;
-    top: 0;
+    top: var(--archive-banner-height);
     left: 0;
     width: 100%;
     padding-top: 10px;
@@ -333,7 +394,7 @@ h1 {
     display: block;
     position: fixed;
     right: 20px;
-    top: 9em;
+    top: calc(9em + var(--archive-banner-height));
     border-radius: 4px;
     border: 1px;
     height: 2.3em;
@@ -401,7 +462,7 @@ h4 {
 
 .leaflet-top {
     position: absolute;
-    margin-top: 7.2em;
+    margin-top: calc(7.2em + var(--archive-banner-height));
     z-index: 1000;
 }
 
@@ -602,11 +663,11 @@ h4 {
 	}
 
 	#make-history-box {
-		top:7.25em;
+        top: calc(7.25em + var(--archive-banner-height));
 	}
 
     #layerselect {
-        top: 100px !important;
+        top: calc(100px + var(--archive-banner-height)) !important;
     }
 			
 		
@@ -734,6 +795,22 @@ h4 {
     /**********************************************************************/
     /* PHONE SCREEN SIZES (600px OR LESS) */
     @media (max-width: 600px) {
+        :root {
+            --archive-banner-height: 116px;
+        }
+
+        #archive-banner {
+            gap: 12px;
+            padding: 14px 16px;
+        }
+
+        .archive-banner-title {
+            font-size: 16px;
+        }
+
+        .archive-banner-text {
+            font-size: 14px;
+        }
 		.geocoder-control-input {
             left: 0.25em;
             top: 10px;
@@ -746,7 +823,7 @@ h4 {
 
         #layerselect {     
             left:20px;       
-            top: 110px !important;
+            top: calc(110px + var(--archive-banner-height)) !important;
         }
 
 		.leaflet-control-layers {
