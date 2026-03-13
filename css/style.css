@@ -2,15 +2,9 @@
 
 /* CSS TO STYLE THE WHOLE PAGE */
 
-:root {
-    --archive-banner-height: 88px;
-}
-
-
 html,
 body {
     margin: 0;
-    padding: 0;
     height: 100%;
     width: 100%;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -18,35 +12,44 @@ body {
     overflow-x: hidden;
 }
 
+html {
+    --archive-banner-height: 58px;
+}
+
+body {
+    padding-top: var(--archive-banner-height);
+}
+
 #archive-banner {
     position: fixed;
     top: 0;
     left: 0;
+    right: 0;
     z-index: 100002;
     display: flex;
     align-items: flex-start;
-    gap: 18px;
-    width: 100%;
+    gap: 1em;
     box-sizing: border-box;
-    padding: 18px 20px;
+    padding: 0.75em 1.25em 0.7em;
     background-color: #d6e5ea;
+    border-bottom: 1px solid #9eb8c2;
     color: #1c1c1c;
+    font-size: 16px;
+    line-height: 1.4;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .archive-banner-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex: 0 0 20px;
-    width: 20px;
-    height: 20px;
-    margin-top: 2px;
+    flex: 0 0 auto;
+    width: 1.75em;
+    height: 1.75em;
     border-radius: 50%;
     background-color: #005a7a;
     color: #ffffff;
     font-size: 14px;
     font-weight: 700;
-    line-height: 1;
+    line-height: 1.75em;
+    text-align: center;
 }
 
 .archive-banner-content {
@@ -59,27 +62,28 @@ body {
 }
 
 .archive-banner-title {
-    font-size: 18px;
+    font-size: 1.05em;
     font-weight: 700;
 }
 
 .archive-banner-text {
-    margin-top: 8px;
-    font-size: 16px;
-    line-height: 1.45;
+    margin-top: 0.2em;
+    line-height: 1.4;
 }
 
 .archive-banner-text a {
     color: #005073;
+    font-weight: 700;
     word-break: break-word;
 }
 
 #map {
     position: absolute;
-    top: 0;
-    bottom: 0;
+    top: var(--archive-banner-height);
     right: 0;
     width: 100%;
+    height: calc(100vh - var(--archive-banner-height));
+    min-height: calc(100vh - var(--archive-banner-height));
 }
 
 #layerselect {
@@ -90,16 +94,6 @@ body {
     height: 30px; 
     width: 200px
 }
-
-
-
-
-/* BROWSER ADDS MARGIN BY DEFAULT. THIS GETS RID OF SCROLLBAR */
-
-body {
-    margin: 0;
-}
-
 #opacity-slider {
     touch-action: auto;
     -ms-touch-action: auto;
@@ -795,21 +789,20 @@ h4 {
     /**********************************************************************/
     /* PHONE SCREEN SIZES (600px OR LESS) */
     @media (max-width: 600px) {
-        :root {
-            --archive-banner-height: 116px;
+        html {
+            --archive-banner-height: 92px;
         }
 
         #archive-banner {
-            gap: 12px;
-            padding: 14px 16px;
+            padding: 0.9em 1em;
         }
 
         .archive-banner-title {
-            font-size: 16px;
+            font-size: 1em;
         }
 
         .archive-banner-text {
-            font-size: 14px;
+            font-size: 0.95em;
         }
 		.geocoder-control-input {
             left: 0.25em;

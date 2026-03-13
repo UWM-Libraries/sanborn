@@ -20,6 +20,8 @@ Add a top-of-page notice banner that:
   - a short title
   - a short explanatory sentence
   - a link to the request/help form
+- Prefer descriptive link text over showing the raw URL.
+- Expect final link wording to affect wrapping and banner height.
 - Use `role="status"` and `aria-live="polite"` only if the banner is intended to be announced as status content.
 - Mark decorative icon content with `aria-hidden="true"`.
 
@@ -31,8 +33,8 @@ Recommended structure:
   <div class="archive-banner-content">
     <p class="archive-banner-title">This page has been archived and is not updated</p>
     <p class="archive-banner-text">
-      If you need assistance with this page, please use this form to make a request:
-      <a href="..." target="_blank" rel="noopener noreferrer">...</a>
+      If you need assistance with this page,
+      <a href="..." target="_blank" rel="noopener noreferrer">please complete the request for accessible web content form</a>.
     </p>
   </div>
 </div>
@@ -42,8 +44,8 @@ Preferred link and wording for AGSL archive projects:
 
 ```html
 <p class="archive-banner-text">
-  If you need assistance with this page, please use this form to make a request:
-  <a href="https://uwm.edu/libraries/digital-collections/digital-collections-request-for-accessible-web-content-form/" target="_blank" rel="noopener noreferrer">https://uwm.edu/libraries/digital-collections/digital-collections-request-for-accessible-web-content-form/</a>
+  If you need assistance with this page,
+  <a href="https://uwm.edu/libraries/digital-collections/digital-collections-request-for-accessible-web-content-form/" target="_blank" rel="noopener noreferrer">please complete the request for accessible web content form</a>.
 </p>
 ```
 
@@ -51,6 +53,7 @@ Preferred link and wording for AGSL archive projects:
 
 - Style the banner as `position: fixed` at the top of the page.
 - Use a CSS custom property for banner height, for example `--archive-banner-height`.
+- Treat `--archive-banner-height` as a layout token to tune after the final banner copy, text sizing, and padding are in place.
 - Apply the top offset to `body`, not to `html`.
 - Size the main app area with `100vh` math when needed, not `100%`, to avoid bottom whitespace after adding the banner.
 - Shift fixed-position app chrome down using that variable.
@@ -94,6 +97,8 @@ main {
   background: #d6e5ea;
   border-bottom: 1px solid #9eb8c2;
   color: #1c1c1c;
+  font-size: 16px;
+  line-height: 1.4;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
@@ -104,6 +109,7 @@ main {
   border-radius: 50%;
   background: #005a7a;
   color: #ffffff;
+  font-size: 14px;
   font-weight: bold;
   line-height: 1.75em;
   text-align: center;
@@ -172,6 +178,7 @@ Important lesson from this project:
 
 - define a larger `--archive-banner-height` in the mobile media query if the banner wraps to two lines
 - reduce title/text size slightly on small screens
+- re-check banner height after changing link wording, since descriptive link text may wrap differently than a raw URL
 - verify that dropdowns, search controls, and other fixed map UI still fit below the banner
 
 ## Checklist
